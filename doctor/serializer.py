@@ -22,12 +22,18 @@ class AvaliableTimeSerializer(serializers.ModelSerializer):
 
 
 class ReviewerSerializer(serializers.ModelSerializer):
+    reviewer = serializers.StringRelatedField(many=False)
+    doctor = serializers.StringRelatedField(many=False)
     class Meta:
         model = Reviewer
         fields = "__all__"
 
 
 class DoctorSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(many=False)
+    speclization = serializers.StringRelatedField(many=True)
+    designation = serializers.StringRelatedField(many=True)
+    avaliableTime = serializers.StringRelatedField(many=True)
     class Meta:
         model = Doctor
         fields = "__all__"
