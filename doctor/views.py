@@ -33,10 +33,14 @@ class DoctorPagination(pagination.PageNumberPagination):
     page_size = 4
     page_size_query_param = page_size
     max_page_size = 100
+
+
+
+
 class DoctorViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     filter_backends = [filters.SearchFilter]
     pagination_class = DoctorPagination
-    search_fields = ['user__first_name', 'user__email', 'designation__name', 'specialization__name'] 
+    search_fields = ['user__first_name', 'user__email', 'designation__name', 'speclization__name'] 
