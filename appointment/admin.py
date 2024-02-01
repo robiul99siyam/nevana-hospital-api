@@ -16,7 +16,7 @@ class AppointmentAdmin(admin.ModelAdmin):
         obj.save()
         if obj.appointment_status == 'Running' and obj.appointment_types == 'Online':
             email_subject = "Appointment in nevana hospital"
-            email_body = render_to_string("appointment.html",{'user' : obj.patient.user,"doctor":obj.doctor.user,"meet_link":obj.doctor.user.meet_link})
+            email_body = render_to_string("appointment.html",{'user' : obj.patient.user,"doctor":obj.doctor.user,"meet_link":obj.doctor.meet_link})
 
             email = EmailMultiAlternatives(email_subject,'',to=[obj.patient.user.email])
             email.attach_alternative(email_body,'text/html')
